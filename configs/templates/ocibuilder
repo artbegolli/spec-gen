@@ -1,0 +1,23 @@
+builds:
+    templates:
+      - name: build-template
+        cmd:
+          - docker:
+              inline:
+              {{ range .Cmds }}
+                - {{ . }}
+              {{ end }}
+    steps:
+      - metadata:
+          name: {{ .ImageName }}
+          labels:
+            createdBy: spec-gen
+        stages:
+          - metadata:
+              name: build-stage
+            base:
+              image: {{ .Base }}
+              tag: {{ .BaseTag }}
+            template: build-template
+        tag: {{ .Tag }}
+        daemon: true
