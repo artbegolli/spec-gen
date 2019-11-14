@@ -4,8 +4,7 @@ builds:
         cmd:
           - docker:
               inline:
-              {{ range .Cmds }}
-                - {{ . }}
+              {{ range .Cmds }} - {{ . }}
               {{ end }}
     steps:
       - metadata:
