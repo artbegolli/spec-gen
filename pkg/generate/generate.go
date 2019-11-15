@@ -8,15 +8,7 @@ import (
 	"html/template"
 )
 
-type buildTemplate struct {
-	Base      string
-	BaseTag   string
-	Cmds      []string
-	ImageName string
-	Tag       string
-}
-
-func Generate(buildArgs v1alpha1.BuildArgs) error {
+func Generate(buildTemplate v1alpha1.BuildTemplate) error {
 	var buf bytes.Buffer
 	box := packr.NewBox("../../configs/templates")
 
@@ -28,19 +20,6 @@ func Generate(buildArgs v1alpha1.BuildArgs) error {
 	tmpl, err := template.New("generatedSpec").Parse(string(file))
 	if err != nil {
 		return err
-	}
-
-	var cmds []string
-	for _, cmd := range buildArgs.Cmds {
-		cmds = append(cmds, cmd.String())
-	}
-
-	buildTemplate := buildTemplate{
-		buildArgs.Base,
-		buildArgs.BaseTag,
-		cmds,
-		buildArgs.ImageName,
-		buildArgs.Tag,
 	}
 
 	if err = tmpl.Execute(&buf, buildTemplate); err != nil {

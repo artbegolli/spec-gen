@@ -1,0 +1,10 @@
+syntax = "proto3";
+package v1alpha1;
+
+message BuildArgs {
+    string greeting = 1;
+}
+
+service Generate {
+    rpc GenerateSpec(BuildArgs) returns (BuildArgs) {}
+}

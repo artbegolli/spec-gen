@@ -5,10 +5,12 @@ import (
 	"strings"
 )
 
-type PlatformType string
+type Platform string
 
 const (
-	Python PlatformType = "python"
+	Python Platform = "python"
+	Java   Platform = "java"
+	Go     Platform = "go"
 )
 
 type Cmd struct {
@@ -25,6 +27,14 @@ type BuildArgs struct {
 	Base      string
 	BaseTag   string
 	Cmds      []Cmd
+	ImageName string
+	Tag       string
+}
+
+type BuildTemplate struct {
+	Base      string
+	BaseTag   string
+	Cmds      []string
 	ImageName string
 	Tag       string
 }
