@@ -27,6 +27,5 @@ func Generate(buildTemplate v1alpha1.BuildTemplate) error {
 	}
 
 	fmt.Println(buf.String())
-
 	return nil
 }
