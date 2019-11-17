@@ -1,10 +1,27 @@
 syntax = "proto3";
 package v1alpha1;
 
-message BuildArgs {
+message PingMessage {
     string greeting = 1;
 }
 
-service Generate {
-    rpc GenerateSpec(BuildArgs) returns (BuildArgs) {}
+service Ping {
+    rpc SayHello(PingMessage) returns (PingMessage) {}
+}
+
+message SpecMessage {
+    string base = 1;
+    string baseTag = 2;
+    repeated string cmds = 3;
+    string imageName = 4;
+    string tag = 5;
+}
+
+message SpecResponse {
+    string imageName = 1;
+    bytes buildSpec = 2;
+}
+
+service SpecGen {
+    rpc GetSpec(SpecMessage) returns (SpecResponse) {}
 }
