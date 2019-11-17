@@ -63,22 +63,151 @@ func (m *PingMessage) GetGreeting() string {
 	return ""
 }
 
+type SpecMessage struct {
+	Base                 string   `protobuf:"bytes,1,opt,name=base,proto3" json:"base,omitempty"`
+	BaseTag              string   `protobuf:"bytes,2,opt,name=baseTag,proto3" json:"baseTag,omitempty"`
+	Cmds                 []string `protobuf:"bytes,3,rep,name=cmds,proto3" json:"cmds,omitempty"`
+	ImageName            string   `protobuf:"bytes,4,opt,name=imageName,proto3" json:"imageName,omitempty"`
+	Tag                  string   `protobuf:"bytes,5,opt,name=tag,proto3" json:"tag,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *SpecMessage) Reset()         { *m = SpecMessage{} }
+func (m *SpecMessage) String() string { return proto.CompactTextString(m) }
+func (*SpecMessage) ProtoMessage()    {}
+func (*SpecMessage) Descriptor() ([]byte, []int) {
+	return fileDescriptor_ce21d2510d3ac9c9, []int{1}
+}
+
+func (m *SpecMessage) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_SpecMessage.Unmarshal(m, b)
+}
+func (m *SpecMessage) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_SpecMessage.Marshal(b, m, deterministic)
+}
+func (m *SpecMessage) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_SpecMessage.Merge(m, src)
+}
+func (m *SpecMessage) XXX_Size() int {
+	return xxx_messageInfo_SpecMessage.Size(m)
+}
+func (m *SpecMessage) XXX_DiscardUnknown() {
+	xxx_messageInfo_SpecMessage.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_SpecMessage proto.InternalMessageInfo
+
+func (m *SpecMessage) GetBase() string {
+	if m != nil {
+		return m.Base
+	}
+	return ""
+}
+
+func (m *SpecMessage) GetBaseTag() string {
+	if m != nil {
+		return m.BaseTag
+	}
+	return ""
+}
+
+func (m *SpecMessage) GetCmds() []string {
+	if m != nil {
+		return m.Cmds
+	}
+	return nil
+}
+
+func (m *SpecMessage) GetImageName() string {
+	if m != nil {
+		return m.ImageName
+	}
+	return ""
+}
+
+func (m *SpecMessage) GetTag() string {
+	if m != nil {
+		return m.Tag
+	}
+	return ""
+}
+
+type SpecResponse struct {
+	ImageName            string   `protobuf:"bytes,1,opt,name=imageName,proto3" json:"imageName,omitempty"`
+	BuildSpec            []byte   `protobuf:"bytes,2,opt,name=buildSpec,proto3" json:"buildSpec,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *SpecResponse) Reset()         { *m = SpecResponse{} }
+func (m *SpecResponse) String() string { return proto.CompactTextString(m) }
+func (*SpecResponse) ProtoMessage()    {}
+func (*SpecResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_ce21d2510d3ac9c9, []int{2}
+}
+
+func (m *SpecResponse) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_SpecResponse.Unmarshal(m, b)
+}
+func (m *SpecResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_SpecResponse.Marshal(b, m, deterministic)
+}
+func (m *SpecResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_SpecResponse.Merge(m, src)
+}
+func (m *SpecResponse) XXX_Size() int {
+	return xxx_messageInfo_SpecResponse.Size(m)
+}
+func (m *SpecResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_SpecResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_SpecResponse proto.InternalMessageInfo
+
+func (m *SpecResponse) GetImageName() string {
+	if m != nil {
+		return m.ImageName
+	}
+	return ""
+}
+
+func (m *SpecResponse) GetBuildSpec() []byte {
+	if m != nil {
+		return m.BuildSpec
+	}
+	return nil
+}
+
 func init() {
 	proto.RegisterType((*PingMessage)(nil), "v1alpha1.PingMessage")
+	proto.RegisterType((*SpecMessage)(nil), "v1alpha1.SpecMessage")
+	proto.RegisterType((*SpecResponse)(nil), "v1alpha1.SpecResponse")
 }
 
 func init() { proto.RegisterFile("gen.proto", fileDescriptor_ce21d2510d3ac9c9) }
 
 var fileDescriptor_ce21d2510d3ac9c9 = []byte{
-	// 117 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xe2, 0xe2, 0x4c, 0x4f, 0xcd, 0xd3,
-	0x2b, 0x28, 0xca, 0x2f, 0xc9, 0x17, 0xe2, 0x28, 0x33, 0x4c, 0xcc, 0x29, 0xc8, 0x48, 0x34, 0x54,
-	0xd2, 0xe4, 0xe2, 0x0e, 0xc8, 0xcc, 0x4b, 0xf7, 0x4d, 0x2d, 0x2e, 0x4e, 0x4c, 0x4f, 0x15, 0x92,
-	0xe2, 0xe2, 0x48, 0x2f, 0x4a, 0x4d, 0x2d, 0xc9, 0xcc, 0x4b, 0x97, 0x60, 0x54, 0x60, 0xd4, 0xe0,
-	0x0c, 0x82, 0xf3, 0x8d, 0x9c, 0xb8, 0x58, 0x40, 0x4a, 0x85, 0xac, 0xb8, 0x38, 0x82, 0x13, 0x2b,
-	0x3d, 0x52, 0x73, 0x72, 0xf2, 0x85, 0x44, 0xf5, 0x60, 0x26, 0xe9, 0x21, 0x19, 0x23, 0x85, 0x5d,
-	0x58, 0x89, 0x21, 0x89, 0x0d, 0x6c, 0xbf, 0x31, 0x20, 0x00, 0x00, 0xff, 0xff, 0x5e, 0x57, 0x2a,
-	0x1e, 0x8c, 0x00, 0x00, 0x00,
+	// 260 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x6c, 0x91, 0x41, 0x4b, 0xfb, 0x40,
+	0x10, 0xc5, 0x9b, 0x7f, 0xf2, 0x37, 0xc9, 0xb4, 0x07, 0x19, 0x50, 0x96, 0xd0, 0x43, 0xd9, 0x93,
+	0x5e, 0x02, 0xad, 0xb7, 0x1e, 0x05, 0xa9, 0x08, 0x8a, 0xa4, 0x7e, 0x81, 0x49, 0x3b, 0xac, 0x81,
+	0x64, 0x13, 0xba, 0x51, 0xf0, 0xe4, 0x57, 0x97, 0x59, 0x8c, 0x4d, 0xc5, 0xd3, 0xce, 0xfc, 0x78,
+	0x6f, 0x98, 0x79, 0x0b, 0xa9, 0x61, 0x9b, 0x77, 0x87, 0xb6, 0x6f, 0x31, 0x79, 0x5f, 0x52, 0xdd,
+	0xbd, 0xd2, 0x52, 0x5f, 0xc3, 0xf4, 0xb9, 0xb2, 0xe6, 0x91, 0x9d, 0x23, 0xc3, 0x98, 0x41, 0x62,
+	0x0e, 0xcc, 0x7d, 0x65, 0x8d, 0x0a, 0x16, 0xc1, 0x55, 0x5a, 0xfc, 0xf4, 0xfa, 0x13, 0xa6, 0xdb,
+	0x8e, 0x77, 0x83, 0x14, 0x21, 0x2a, 0xc9, 0xf1, 0xb7, 0xcc, 0xd7, 0xa8, 0x20, 0x96, 0xf7, 0x85,
+	0x8c, 0xfa, 0xe7, 0xf1, 0xd0, 0x8a, 0x7a, 0xd7, 0xec, 0x9d, 0x0a, 0x17, 0xa1, 0xa8, 0xa5, 0xc6,
+	0x39, 0xa4, 0x55, 0x43, 0x86, 0x9f, 0xa8, 0x61, 0x15, 0x79, 0xfd, 0x11, 0xe0, 0x39, 0x84, 0x3d,
+	0x19, 0xf5, 0xdf, 0x73, 0x29, 0xf5, 0x03, 0xcc, 0x64, 0x81, 0x82, 0x5d, 0xd7, 0x5a, 0xc7, 0xa7,
+	0xfe, 0xe0, 0xb7, 0x7f, 0x0e, 0x69, 0xf9, 0x56, 0xd5, 0x7b, 0xb1, 0xf8, 0x6d, 0x66, 0xc5, 0x11,
+	0xac, 0x6e, 0x21, 0x92, 0xbb, 0x71, 0x0d, 0xc9, 0x96, 0x3e, 0xee, 0xb9, 0xae, 0x5b, 0xbc, 0xc8,
+	0x87, 0x58, 0xf2, 0x51, 0x26, 0xd9, 0xdf, 0x58, 0x4f, 0x56, 0x77, 0x10, 0xcb, 0xac, 0x0d, 0x5b,
+	0x5c, 0x43, 0xbc, 0xe1, 0x5e, 0xba, 0xf1, 0x94, 0x51, 0x5c, 0xd9, 0xe5, 0x29, 0x1e, 0x8e, 0xd0,
+	0x93, 0xf2, 0xcc, 0xff, 0xc9, 0xcd, 0x57, 0x00, 0x00, 0x00, 0xff, 0xff, 0xc2, 0xc5, 0xaa, 0x8e,
+	0xa0, 0x01, 0x00, 0x00,
 }
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -155,6 +284,78 @@ var _Ping_serviceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "SayHello",
 			Handler:    _Ping_SayHello_Handler,
+		},
+	},
+	Streams:  []grpc.StreamDesc{},
+	Metadata: "gen.proto",
+}
+
+// SpecGenClient is the client API for SpecGen service.
+//
+// For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
+type SpecGenClient interface {
+	GetSpec(ctx context.Context, in *SpecMessage, opts ...grpc.CallOption) (*SpecResponse, error)
+}
+
+type specGenClient struct {
+	cc *grpc.ClientConn
+}
+
+func NewSpecGenClient(cc *grpc.ClientConn) SpecGenClient {
+	return &specGenClient{cc}
+}
+
+func (c *specGenClient) GetSpec(ctx context.Context, in *SpecMessage, opts ...grpc.CallOption) (*SpecResponse, error) {
+	out := new(SpecResponse)
+	err := c.cc.Invoke(ctx, "/v1alpha1.SpecGen/GetSpec", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+// SpecGenServer is the server API for SpecGen service.
+type SpecGenServer interface {
+	GetSpec(context.Context, *SpecMessage) (*SpecResponse, error)
+}
+
+// UnimplementedSpecGenServer can be embedded to have forward compatible implementations.
+type UnimplementedSpecGenServer struct {
+}
+
+func (*UnimplementedSpecGenServer) GetSpec(ctx context.Context, req *SpecMessage) (*SpecResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetSpec not implemented")
+}
+
+func RegisterSpecGenServer(s *grpc.Server, srv SpecGenServer) {
+	s.RegisterService(&_SpecGen_serviceDesc, srv)
+}
+
+func _SpecGen_GetSpec_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(SpecMessage)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(SpecGenServer).GetSpec(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/v1alpha1.SpecGen/GetSpec",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(SpecGenServer).GetSpec(ctx, req.(*SpecMessage))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+var _SpecGen_serviceDesc = grpc.ServiceDesc{
+	ServiceName: "v1alpha1.SpecGen",
+	HandlerType: (*SpecGenServer)(nil),
+	Methods: []grpc.MethodDesc{
+		{
+			MethodName: "GetSpec",
+			Handler:    _SpecGen_GetSpec_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
