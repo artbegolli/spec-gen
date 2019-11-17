@@ -15,6 +15,7 @@ message SpecMessage {
     repeated string cmds = 3;
     string imageName = 4;
     string tag = 5;
+    string platform = 6;
 }
 
 message SpecResponse {

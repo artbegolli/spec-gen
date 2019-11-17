@@ -12,7 +12,7 @@ type Python struct {
 	Cmds    []string
 }
 
-func (p Python) Generate(imageName string, tag string) error {
+func (p Python) Generate(imageName string, tag string) ([]byte, error) {
 
 	var pythonCmds []string
 	for _, c := range p.Cmds {

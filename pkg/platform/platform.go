@@ -8,7 +8,7 @@ import (
 )
 
 type Platform interface {
-	Generate(imageName string, tag string) error
+	Generate(imageName string, tag string) ([]byte, error)
 }
 
 func GetPlatformSpec(platform v1alpha1.Platform, buildCmds []string) (Platform, error) {

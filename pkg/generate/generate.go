@@ -8,24 +8,24 @@ import (
 	"html/template"
 )
 
-func Generate(buildTemplate v1alpha1.BuildTemplate) error {
+func Generate(buildTemplate v1alpha1.BuildTemplate) ([]byte, error) {
 	var buf bytes.Buffer
 	box := packr.NewBox("../../configs/templates")
 
 	file, err := box.Find("ocibuilder")
 	if err != nil {
-		return err
+		return nil, err
 	}
 
 	tmpl, err := template.New("generatedSpec").Parse(string(file))
 	if err != nil {
-		return err
+		return nil, err
 	}
 
 	if err = tmpl.Execute(&buf, buildTemplate); err != nil {
-		return err
+		return nil, err
 	}
 
 	fmt.Println(buf.String())
-	return nil
+	return buf.Bytes(), nil
 }
