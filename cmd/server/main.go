@@ -22,6 +22,7 @@ func main() {
 	grpcServer := grpc.NewServer()
 	// attach the Ping service to the server
 	v1alpha1.RegisterPingServer(grpcServer, &s)
+	v1alpha1.RegisterSpecGenServer(grpcServer, &s)
 	// start the server
 	if err := grpcServer.Serve(lis); err != nil {
 		log.Fatalf("failed to serve: %s", err)

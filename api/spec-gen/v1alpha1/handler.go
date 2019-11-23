@@ -14,7 +14,7 @@ func (s *Server) SayHello(ctx context.Context, in *PingMessage) (*PingMessage, e
 	return &PingMessage{Greeting: "bar"}, nil
 }
 
-func (s *Server) SpecGen(ctx context.Context, in *SpecMessage) (*SpecResponse, error) {
+func (s *Server) GetSpec(ctx context.Context, in *SpecMessage) (*SpecResponse, error) {
 	log.Printf("Receive message %s", in.ImageName)
 	platformSpec, _ := platform.GetPlatformSpec(Platform(in.Platform), in.Cmds)
 	spec, err := platformSpec.Generate(in.ImageName, in.Tag)
