@@ -3,9 +3,10 @@ package generate
 import (
 	"bytes"
 	"fmt"
+	"html/template"
+	
 	"github.com/artbegolli/spec-gen/api/spec-gen/v1alpha1"
 	"github.com/gobuffalo/packr"
-	"html/template"
 )
 
 func Generate(buildTemplate v1alpha1.BuildTemplate) ([]byte, error) {
@@ -26,6 +27,5 @@ func Generate(buildTemplate v1alpha1.BuildTemplate) ([]byte, error) {
 		return nil, err
 	}
 
-	fmt.Println(buf.String())
 	return buf.Bytes(), nil
 }
